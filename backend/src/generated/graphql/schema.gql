@@ -2,11 +2,42 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type PostModel {
-  id: String!
+type Mutation {
+  createDraft(authorEmail: String!, data: PostCreateInput!): Post!
+  deletePost(id: String!): Post
+  publishPost(id: String!): Post
+  signupUser(data: UserCreateInput!): User!
+}
+
+type Post {
+  author: User
+  authorId: Int!
+  content: String
+  id: Int!
+  published: Boolean
+  title: String!
+}
+
+input PostCreateInput {
+  content: String
   title: String!
 }
 
 type Query {
-  posts: [PostModel!]
+  getAllPosts: [Post!]!
+  getFilteredPosts(searchString: String!): [Post!]!
+  getPostById(id: Float!): Post
+  getPublishedPosts: [Post!]!
+}
+
+type User {
+  email: String!
+  id: Int!
+  name: String
+  posts: [Post!]
+}
+
+input UserCreateInput {
+  email: String!
+  name: String
 }
