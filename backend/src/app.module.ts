@@ -11,7 +11,11 @@ import { PostResolver } from './post/post.resolvers';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/generated/graphql/schema.gql'),
+
+      autoSchemaFile: join(
+        process.cwd().replace(/\/[^/]+$/, ''),
+        '/generated/graphql/schema.gql',
+      ),
       sortSchema: true,
     }),
   ],

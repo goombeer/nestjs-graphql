@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import ApolloProvider from "@/components/apollo/provider";
+import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,12 +25,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  loadDevMessages();
+  loadErrorMessages();
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ApolloProvider>{children}</ApolloProvider>
       </body>
     </html>
   );

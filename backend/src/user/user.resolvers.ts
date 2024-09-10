@@ -19,7 +19,7 @@ export class UserResolver {
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
   @Mutation((returns) => User)
-  signupUser(@Args('data') data: UserCreateInput) {
+  signUpUser(@Args('data') data: UserCreateInput) {
     return this.prismaService.user.create({
       data: {
         name: data.name,

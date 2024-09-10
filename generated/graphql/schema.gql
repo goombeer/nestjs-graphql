@@ -6,7 +6,7 @@ type Mutation {
   createDraft(authorEmail: String!, data: PostCreateInput!): Post!
   deletePost(id: String!): Post
   publishPost(id: String!): Post
-  signupUser(data: UserCreateInput!): User!
+  signUpUser(data: UserCreateInput!): User!
 }
 
 type Post {
